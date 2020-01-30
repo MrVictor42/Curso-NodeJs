@@ -1,1 +1,5 @@
-# Curso-Nodejs
+#Aula 03
+
+* Primeiros Comandos como hello world;
+* Demonstrações utilizando o console.log para mostrar os resultados;
+* Para rodar um arquivo com o interpretador do node, basta escrever no terminal: "node + 'nome do arquivo.js'".
