@@ -1,4 +1,7 @@
-<h2> Aula 04 - Módulos </h2>
+<h2> Class 06 - Express </h2>
 
-* Criação de módulos (Separação dos arquivos);
-* Chamada desses módulos em um arquivo principal;
+* Introduction in express;
+* This is a minimalist framework;
+* Create node_modules;
+* https://www.npmjs.com/package/express
+* Install express;
