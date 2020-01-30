@@ -1,4 +1,6 @@
-<h2> Aula 04 </h2>
+<h2> Class 05 - HTTP </h2>
 
-* Criação de módulos (Separação dos arquivos);
-* Chamada desses módulos em um arquivo principal;
+* Request HTTP;
+* How to create connect http with node;
+* A little exemple of response for user when he enter in application web;
+* <b> The node for while don't update automatically, so has that stay close the server and opening every update. </b>
