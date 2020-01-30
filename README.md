@@ -1,4 +1,4 @@
-<h2> Aula 03 </h2>
+<h2> Aula 03 - NodeJs na Prática </h2>
 
 * Primeiros Comandos como hello world;
 * Demonstrações utilizando o console.log para mostrar os resultados;
