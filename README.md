@@ -1,4 +1,5 @@
-<h2> Class 10 - View HTML </h2>
+<h2> Class 16 - Sequenlize </h2>
 
-* HTML in node;
-* How is .html, we can use another frameworks like materialize or bootstrap in pages;
+* Introduction Sequenlize;
+* npm i --save sequelize;
+* npm i --save mysql2;
