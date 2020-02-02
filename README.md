@@ -1,5 +1,4 @@
-<h2> Class 08 - Parameters </h2>
+<h2> Class 10 - View HTML </h2>
 
-* Pass parameters in rotes;
-* The "req.params" is a object, so we can use the params like a var;
-* Node accept html;
+* HTML in node;
+* How is .html, we can use another frameworks like materialize or bootstrap in pages;
