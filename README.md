@@ -1,6 +1,5 @@
-<h2> Class 07 - Express </h2>
+<h2> Class 08 - Parameters </h2>
 
-* Introduction in express;
-* How to use server with express;
-* Rotes;
-* Send message for rote;
+* Pass parameters in rotes;
+* The "req.params" is a object, so we can use the params like a var;
+* Node accept html;
