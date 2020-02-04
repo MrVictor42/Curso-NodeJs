@@ -1,6 +1,3 @@
-<h2> Class 19 - Handlebars </h2>
+<h2> Class 20 - Create Form </h2>
 
-* Introduction Handlebars;
-* Use for loops in html;
-* Use for backend in html;
-* Template engine;
+* Create form.handlebars;
