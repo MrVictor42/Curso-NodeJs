@@ -1,4 +1,4 @@
-<h2> Class 21 - Create Form </h2>
+<h2> Class 22 - Body Parser </h2>
 
-* Different between GET and POST;
-* Send datas in form;
+* Install body parser;
+* npm i --save body-parser;
