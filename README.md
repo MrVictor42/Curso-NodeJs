@@ -1,4 +1,4 @@
-<h2> Class 22 - Body Parser </h2>
+<h2> Class 23 - Create database </h2>
 
-* Install body parser;
-* npm i --save body-parser;
+* Create a new database;
+* Create a new path to config database (models -> db.js);
