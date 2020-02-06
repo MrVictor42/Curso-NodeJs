@@ -1,4 +1,4 @@
-<h2> Class 23 - Create database </h2>
+<h2> Class 24 - Get Datas in Forms </h2>
 
-* Create a new database;
-* Create a new path to config database (models -> db.js);
+* Ajusting new rotes;
+* Get datas in forms and save in databases;
