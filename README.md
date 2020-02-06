@@ -1,3 +1,4 @@
-<h2> Class 20 - Create Form </h2>
+<h2> Class 21 - Create Form </h2>
 
-* Create form.handlebars;
+* Different between GET and POST;
+* Send datas in form;

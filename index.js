@@ -17,6 +17,10 @@ app.get('/register', function(req, res){
     res.render('form');
 });
 
+app.post('/add', function(req, res){
+    res.send('Receive form');
+})
+
 app.listen(8081, function(){
     console.log('Server running in: http://localhost:8081/')
 });
