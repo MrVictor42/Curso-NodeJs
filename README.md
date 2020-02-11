@@ -1,4 +1,4 @@
-<h2> Class 26 - Delete posts </h2>
+<h2> Class 28 - Install MongoDB </h2>
 
-* Delete post;
-* Redirect user to another page;
+* MongoDB ubuntu: sudo apt install -y mongodb;
+* MongoCompass: https://www.mongodb.com/download-center/compass?jmp=docs;
