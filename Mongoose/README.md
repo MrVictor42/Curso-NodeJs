@@ -1,3 +1,3 @@
-<h2> Class 29 - Started Mongoose  </h2>
+<h2> Class 30 - Working with Mongoose  </h2>
 
-* Install Mongoose: npm i --save mongoose;
+* Models in moongoose;
