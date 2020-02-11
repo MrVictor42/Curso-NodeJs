@@ -1,1 +1,10 @@
-<h2> Post List:  </h2>
+<h2> Post List: </h2>
+
+{{#each posts}}
+
+    <small> {{ createdAt }} </small>
+    <h3> {{ title }} </h3>
+    <p> {{ content }} </p>
+    <hr>
+
+{{/each}}

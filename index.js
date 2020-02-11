@@ -13,7 +13,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', function(req, res){
-    res.render('home');
+    Post.findAll({ order: [['id', 'DESC']] }).then(function(posts){
+        res.render('home', { posts: posts });
+    });
 });
 
 app.get('/register', function(req, res){
