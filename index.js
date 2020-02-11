@@ -33,6 +33,14 @@ app.post('/add', function(req, res){
     });
 });
 
+app.get('/delete/:id', function(req, res){
+    Post.destroy({ where: {'id': req.params.id } }).then(function(){
+        res.send('Post delete with success');
+    }).catch(function(error){
+        res.send('Not exists this post anymore!');
+    });
+});
+
 app.listen(8081, function(){
     console.log('Server running in: http://localhost:8081/')
 });

@@ -1,4 +1,4 @@
-<h2> Class 25 - List datas database </h2>
+<h2> Class 26 - Delete posts </h2>
 
-* Get datas in database;
-* Show this datas in homepage;
+* Delete post;
+* Redirect user to another page;
