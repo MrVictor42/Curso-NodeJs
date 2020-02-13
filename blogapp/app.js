@@ -3,9 +3,9 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
+const mongoose = require('mongoose');
 
 const adminRouter = require('./routes/admin');
-// const mongoose = require('mongoose');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -13,6 +13,12 @@ app.use(bodyParser.json());
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/blogapp').then(() => {
+    console.log('Connected to Mongodb!');
+}).catch((error) => {
+    console.log('Failed in connect to mongodb: ' + error);
+});
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRouter);

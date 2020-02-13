@@ -1,4 +1,3 @@
-<h2> Class 34 - Create form handlebars  </h2>
+<h2> Class 35 - Define Model of Categories  </h2>
 
-* Create new routes;
-* Create new form for categories;
+* Create model category;
