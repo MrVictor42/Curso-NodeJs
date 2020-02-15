@@ -1,3 +1,4 @@
-<h2> Class 36 - Register new categories in database  </h2>
+<h2> Class 38 - Middlewares  </h2>
 
-* Create new route for addCategories;
+* What is middleware;
+* Create a middleware;

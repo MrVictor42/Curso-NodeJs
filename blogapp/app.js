@@ -20,6 +20,10 @@ mongoose.connect('mongodb://localhost/blogapp').then(() => {
     console.log('Failed in connect to mongodb: ' + error);
 });
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+    console.log('Hey, im a middleware');
+    next();
+});
 
 app.use('/admin', adminRouter);
 
