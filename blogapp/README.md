@@ -1,3 +1,3 @@
-<h2> Class 35 - Define Model of Categories  </h2>
+<h2> Class 36 - Register new categories in database  </h2>
 
-* Create model category;
+* Create new route for addCategories;
