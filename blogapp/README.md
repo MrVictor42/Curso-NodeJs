@@ -1,4 +1,5 @@
-<h2> Class 38 - Middlewares  </h2>
+<h2> Class 39 - Setting session  </h2>
 
 * What is middleware;
-* Create a middleware;
+* npm i --save express-session;
+* npm i --save connect-flash;
