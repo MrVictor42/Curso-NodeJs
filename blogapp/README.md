@@ -1,5 +1,5 @@
-<h2> Class 39 - Setting session  </h2>
+<h2> Class 40 - How to validate forms with express  </h2>
 
-* What is middleware;
-* npm i --save express-session;
-* npm i --save connect-flash;
+* Validate fiels in forms;
+* Add error in addCategories;
+* Message success;
