@@ -1,5 +1,4 @@
-<h2> Class 40 - How to validate forms with express  </h2>
+<h2> Class 41 - List Categories  </h2>
 
-* Validate fiels in forms;
-* Add error in addCategories;
-* Message success;
+* Get datas on database;
+* npm install --save handlebars@4.5.3;
