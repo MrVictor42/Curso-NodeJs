@@ -1,3 +1,4 @@
-<h2> Class 42 - Edit Categories  </h2>
+<h2> Class 43 - Delete Categories  </h2>
 
-* How to edit category;
+* How to delete category;
+* Show message when not has category registered;
