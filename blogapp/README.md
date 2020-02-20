@@ -1,4 +1,3 @@
-<h2> Class 41 - List Categories  </h2>
+<h2> Class 42 - Edit Categories  </h2>
 
-* Get datas on database;
-* npm install --save handlebars@4.5.3;
+* How to edit category;

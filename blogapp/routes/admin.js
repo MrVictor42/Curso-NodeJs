@@ -16,8 +16,36 @@ router.get('/categories', (req, res) => {
     Category.find().sort({ date: 'DESC' }).then((categories) => {
         res.render('admin/categories', { categories: categories });
     }).catch((error) => {
-        req.flash('error_msg', 'Had a error to list the categories');
+        req.flash('error_msg', 'Had a error to list the categories: ' + error);
         res.redirect('/admin');
+    });
+});
+
+router.get('/categories/edit/:id', (req, res) => {
+    
+    Category.findOne({_id:req.params.id}).then((category) => {
+        res.render('admin/editCategory', {category: category});
+    }).catch((error) => {
+        req.flash('error_msg', 'This category not exist!');
+        res.redirect('/admin/categories');
+    })
+});
+
+router.post('/categories/edit', (req, res) => {
+    
+    Category.findOne({_id: req.body.id}).then((category) => {
+        category.name = req.body.name;
+        category.slug = req.body.slug;
+        category.save().then(() => {
+            req.flash('success_msg', 'Category edited with success!');
+            res.redirect('/admin/categories');
+        }).catch((error) => {
+            req.flash('error_msg', 'Had one intern error to save! ' + error);
+            res.redirect('/admin/categories');
+        });
+    }).catch((error) => {
+        req.flash('error_msg', 'Had a error in edit category: ' + error);
+        res.redirect('/admin/categories');
     });
 });
 
