@@ -1,4 +1,4 @@
-<h2> Class 43 - Delete Categories  </h2>
+<h2> Class 44 - Define model to posts  </h2>
 
-* How to delete category;
-* Show message when not has category registered;
+* Refer one table with another table;
+* Default date;
