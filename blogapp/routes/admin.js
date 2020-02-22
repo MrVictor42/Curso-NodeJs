@@ -96,7 +96,13 @@ router.post('/categories/new', (req, res) => {
 });
 
 router.get('/posts', (req, res) => {
-    res.render('admin/posts');
+
+    Post.find().populate('category').sort({createdAt:'DESC'}).then((posts) => {
+        res.render('admin/posts', {posts: posts});
+    }).catch((error) => {
+        req.flash('error_msg', 'Had a error in list posts: ' + error);
+        res.redirect('/admin');
+    });
 });
 
 router.get('/posts/add', (req, res) => {

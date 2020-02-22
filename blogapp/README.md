@@ -1,3 +1,3 @@
-<h2> Class 46 - Save posts in database  </h2>
+<h2> Class 47 - Lists Posts  </h2>
 
-* Required in input;
+* Lists posts in posts page;
