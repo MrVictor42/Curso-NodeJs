@@ -8,10 +8,6 @@ router.get('/', (req, res) => {
     res.render('admin/index');
 });
 
-router.get('/posts', (req, res) => {
-    res.send('Page posts');
-});
-
 router.get('/categories', (req, res) => {
     Category.find().sort({ date: 'DESC' }).then((categories) => {
         res.render('admin/categories', { categories: categories });
@@ -95,6 +91,19 @@ router.post('/categories/new', (req, res) => {
             res.redirect('/admin');
         });
     }
+});
+
+router.get('/posts', (req, res) => {
+    res.render('admin/posts');
+});
+
+router.get('/posts/add', (req, res) => {
+    Category.find().then((categories) => {
+        res.render('admin/addPost', {categories: categories});
+    }).catch((error) => {
+        req.flash('Had a error in load form: ' + error);
+        res.redirect('/admin');
+    });
 });
 
 module.exports = router; 
