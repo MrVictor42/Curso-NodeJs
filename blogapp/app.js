@@ -35,7 +35,6 @@ mongoose.connect('mongodb://localhost/blogapp').then(() => {
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) => {
-    console.log('Hey, im a middleware');
     next();
 });
 

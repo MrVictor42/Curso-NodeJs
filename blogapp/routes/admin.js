@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 require('../models/Category');
+require('../models/Posts');
 const Category = mongoose.model('categories');
+const Post = mongoose.model('posts');
 
 router.get('/', (req, res) => {
     res.render('admin/index');
@@ -104,6 +106,35 @@ router.get('/posts/add', (req, res) => {
         req.flash('Had a error in load form: ' + error);
         res.redirect('/admin');
     });
+});
+
+router.post('/posts/new', (req, res) => {
+
+    var errors = [];
+
+    if(req.body.categories === '0') {
+        errors.push({ text: 'Invalid Category, Register a new category' });
+    }
+
+    if(errors.length > 0) {
+        res.render('admin/addPosts', { errors: errors });
+    } else {
+        const newPost = {
+            title: req.body.title,
+            description: req.body.description,
+            content: req.body.content,
+            category: req.body.category,
+            slug: req.body.slug
+        }
+        
+        new Post(newPost).save().then(() => {
+            req.flash('success_msg', 'Post save with success!');
+            res.redirect('/admin/posts');
+        }).catch((error) => {
+            req.flash('error_msg', 'Had a error in save post: ' + error);
+            res.redirect('/admin/posts'); 
+        });
+    }
 });
 
 module.exports = router; 
