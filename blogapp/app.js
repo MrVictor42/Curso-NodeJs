@@ -6,6 +6,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
+require('./models/Posts');
+const Post = mongoose.model('posts');
 
 const adminRouter = require('./routes/admin');
 
@@ -36,6 +38,19 @@ mongoose.connect('mongodb://localhost/blogapp').then(() => {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) => {
     next();
+});
+
+app.get('/', (req, res) => {
+    Post.find().populate('category').sort({data: 'DESC'}).then((posts) => {
+        res.render('index', {posts: posts});
+    }).catch((error) => {
+        req.flash('error_msg', 'Had a intern error: ' + error);
+        res.redirect('/404');
+    });
+});
+
+app.get('/404', (req, res) => {
+    res.send('Error 404');
 });
 
 app.use('/admin', adminRouter);
