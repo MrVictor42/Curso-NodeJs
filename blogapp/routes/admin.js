@@ -158,7 +158,7 @@ router.get('/posts/edit/:id', (req, res) => {
     });
 });
 
-router.post('/post/edit', (req, res) => {
+router.post('/posts/edit', (req, res) => {
 
     Post.findOne({_id: req.body.id}).then((post) => {
         
@@ -177,6 +177,16 @@ router.post('/post/edit', (req, res) => {
         });
     }).catch((error) => {
         req.flash('error_msg', 'Had a error in save edit: ' + error);
+        res.redirect('/admin/posts');
+    });
+});
+
+router.get('/posts/delete/:id', (req, res) => {
+    Post.remove({_id: req.params.id}).then(() => {
+        req.flash('success_msg', 'Post deleted with success!');
+        res.redirect('/admin/posts');
+    }).catch((error) => {
+        req.flash('error_msg', 'Had a intern error: ' + error);
         res.redirect('/admin/posts');
     });
 });

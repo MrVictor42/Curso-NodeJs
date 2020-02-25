@@ -1,1 +1,1 @@
-<h2> Class 48 - Edit Posts  </h2>
+<h2> Class 49 - Delete Posts  </h2>
