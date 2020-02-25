@@ -143,4 +143,42 @@ router.post('/posts/new', (req, res) => {
     }
 });
 
+router.get('/posts/edit/:id', (req, res) => {
+    
+    Post.findOne({_id: req.params.id}).then((post) => {
+        Category.find().then((categories) => {
+            res.render('admin/editPosts', {categories: categories, post: post});
+        }).catch((err) => {
+            req.flash('error_msg', 'Had a error in list categories: ' + error);
+            res.redirect('/admin/posts');
+        });
+    }).catch((err) => {
+        req.flash('error_msg', 'Had a error in load form of edit: ' + error);
+        res.redirect('/admin/posts');
+    });
+});
+
+router.post('/post/edit', (req, res) => {
+
+    Post.findOne({_id: req.body.id}).then((post) => {
+        
+        post.title = req.body.title;
+        post.slug = req.body.slug;
+        post.description = req.body.description;
+        post.content = req.body.content;
+        post.category = req.body.category;
+
+        post.save().then(() => {
+            req.flash('success_msg', 'Post edit with success!');
+            res.redirect('/admin/posts');
+        }).catch((error) => {
+            req.flash('error_msg', 'Intern error: ' + error);
+            res.redirect('/admin/posts');
+        });
+    }).catch((error) => {
+        req.flash('error_msg', 'Had a error in save edit: ' + error);
+        res.redirect('/admin/posts');
+    });
+});
+
 module.exports = router; 

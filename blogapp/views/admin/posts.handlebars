@@ -8,7 +8,8 @@
             <h4> Title {{title}} </h4>
             <p> Description: {{description}} </p>
             <small> Date: {{createdAt}} </small> <br>
-            <small> Category: {{category.name}} </small> 
+            <small> Category: {{category.name}} </small> <br>
+            <a href="/admin/posts/edit/{{_id}}"><button class="btn btn-success mt-3"> Edit Post </button></a>
         </div>
     </div>
 {{else}}
