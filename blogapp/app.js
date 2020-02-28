@@ -49,6 +49,20 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/post/:slug', (req, res) => {
+    Post.findOne({slug: req.params.slug}).then((post) => {
+        if(post) {
+            res.render('post/index', {post: post});
+        } else {
+            req.flash('error_msg', 'This post not exists!');
+            res.redirect('/');
+        }
+    }).catch((error) => {
+        req.flash('error_msg', 'Had a intern error: ' + error);
+        res.redirect('/');
+    });
+});
+
 app.get('/404', (req, res) => {
     res.send('Error 404');
 });

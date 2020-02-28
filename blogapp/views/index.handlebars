@@ -9,10 +9,14 @@
 <h2> Recents Posts: </h2>
 
 {{#each posts}}
-<div class="card">
+<div class="card mt-4">
     <div class="card-body">
         <h3> {{title}} </h3>
         <p> {{description}} </p>
+        <a href="/post/{{slug}}"><button class="btn btn-success"> Show More </button></a>
+        <hr>
+        <small> Category: {{category.name}} </small> <br>
+        <small> Created At: {{createdAt}} </small>
     </div>
 </div>
 {{else}}
