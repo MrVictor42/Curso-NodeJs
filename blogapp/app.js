@@ -8,6 +8,8 @@ const session = require('express-session');
 const flash = require('connect-flash');
 require('./models/Posts');
 const Post = mongoose.model('posts');
+require('./models/Category');
+const Category = mongoose.model('categories');
 
 const adminRouter = require('./routes/admin');
 
@@ -65,6 +67,36 @@ app.get('/post/:slug', (req, res) => {
 
 app.get('/404', (req, res) => {
     res.send('Error 404');
+});
+
+app.get('/categories', (req, res) => {
+    Category.find().sort({name: 'ASC'}).then((categories) => {
+        res.render('category/index', {categories: categories});
+    }).catch((error) => {
+        req.flash('error_msg', 'Had a intern error in list categories: ' + error);
+        res.redirect('/');
+    });
+});
+
+app.get('/categories/:slug', (req, res) => {
+    Category.findOne({slug: req.params.slug}).then((category) => {
+        if(category) {
+
+            Post.find({category: category._id}).then((posts) => {
+                res.render('category/posts', {posts: posts, category: category});
+            }).catch((error) => {
+                req.flash('error_msg', 'Had a error in list posts: ' + error);
+                res.redirect('/');
+            });
+
+        } else {
+            req.flash('error_msg', 'This category not exists!');
+            res.redirect('/');
+        }
+    }).catch((error) => {
+        req.flash('error_msg', 'Had a intern error in load page of this category: ' + error);
+        res.redirect('/');
+    });
 });
 
 app.use('/admin', adminRouter);
