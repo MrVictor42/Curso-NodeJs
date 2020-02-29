@@ -10,6 +10,7 @@ require('./models/Posts');
 const Post = mongoose.model('posts');
 require('./models/Category');
 const Category = mongoose.model('categories');
+const usersRouter = require('./routes/users');
 
 const adminRouter = require('./routes/admin');
 
@@ -100,6 +101,7 @@ app.get('/categories/:slug', (req, res) => {
 });
 
 app.use('/admin', adminRouter);
+app.use('/users', usersRouter);
 
 const PORT = 8081;
 app.listen(PORT, () => {
