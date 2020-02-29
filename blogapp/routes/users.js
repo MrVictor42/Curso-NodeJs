@@ -67,8 +67,11 @@ router.post('/register', (req, res) => {
             req.flash('error_msg', 'Had a intern error: ' + error);
             res.redirect('/');
         });
-
     }
+});
+
+router.get('/login', (req, res) => {
+    res.render('users/login');
 });
 
 module.exports = router;
