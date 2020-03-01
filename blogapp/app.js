@@ -29,6 +29,7 @@ app.use((req, res, next)=> {
     res.locals.error_msg = req.flash('error_msg');
     res.locals.warning_msg = req.flash('warning_msg');
     res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
     next();
 });
 app.use(bodyParser.urlencoded({ extended: true }));

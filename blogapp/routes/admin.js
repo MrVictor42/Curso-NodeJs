@@ -5,12 +5,13 @@ require('../models/Category');
 require('../models/Posts');
 const Category = mongoose.model('categories');
 const Post = mongoose.model('posts');
+const { eAdmin } = require('../helpers/is_admin');
 
-router.get('/', (req, res) => {
+router.get('/', eAdmin, (req, res) => {
     res.render('admin/index');
 });
 
-router.get('/categories', (req, res) => {
+router.get('/categories', eAdmin, (req, res) => {
     Category.find().sort({ date: 'DESC' }).then((categories) => {
         res.render('admin/categories', { categories: categories });
     }).catch((error) => {
@@ -19,7 +20,7 @@ router.get('/categories', (req, res) => {
     });
 });
 
-router.get('/categories/edit/:id', (req, res) => {
+router.get('/categories/edit/:id', eAdmin, (req, res) => {
     
     Category.findOne({_id:req.params.id}).then((category) => {
         res.render('admin/editCategory', {category: category});
@@ -29,7 +30,7 @@ router.get('/categories/edit/:id', (req, res) => {
     })
 });
 
-router.post('/categories/edit', (req, res) => {
+router.post('/categories/edit', eAdmin, (req, res) => {
     
     Category.findOne({_id: req.body.id}).then((category) => {
         category.name = req.body.name;
@@ -47,7 +48,7 @@ router.post('/categories/edit', (req, res) => {
     });
 });
 
-router.post('/categories/delete', (req, res) => {
+router.post('/categories/delete', eAdmin, (req, res) => {
     Category.remove({_id: req.body.id}).then(() => {
         req.flash('success_msg', 'Category deleted with success!');
         res.redirect('/admin/categories');
@@ -57,11 +58,11 @@ router.post('/categories/delete', (req, res) => {
     });
 });
 
-router.get('/categories/add', (req, res) => {
+router.get('/categories/add', eAdmin, (req, res) => {
     res.render('admin/addCategories');
 });
 
-router.post('/categories/new', (req, res) => {
+router.post('/categories/new', eAdmin, (req, res) => {
 
     var errors = [];
     if (!req.body.name || typeof req.body.name === undefined || req.body.name === null) {
@@ -95,7 +96,7 @@ router.post('/categories/new', (req, res) => {
     }
 });
 
-router.get('/posts', (req, res) => {
+router.get('/posts', eAdmin, (req, res) => {
 
     Post.find().populate('category').sort({createdAt:'DESC'}).then((posts) => {
         res.render('admin/posts', {posts: posts});
@@ -105,7 +106,7 @@ router.get('/posts', (req, res) => {
     });
 });
 
-router.get('/posts/add', (req, res) => {
+router.get('/posts/add', eAdmin, (req, res) => {
     Category.find().then((categories) => {
         res.render('admin/addPost', {categories: categories});
     }).catch((error) => {
@@ -114,7 +115,7 @@ router.get('/posts/add', (req, res) => {
     });
 });
 
-router.post('/posts/new', (req, res) => {
+router.post('/posts/new', eAdmin, (req, res) => {
 
     var errors = [];
 
@@ -143,7 +144,7 @@ router.post('/posts/new', (req, res) => {
     }
 });
 
-router.get('/posts/edit/:id', (req, res) => {
+router.get('/posts/edit/:id', eAdmin, (req, res) => {
     
     Post.findOne({_id: req.params.id}).then((post) => {
         Category.find().then((categories) => {
@@ -158,7 +159,7 @@ router.get('/posts/edit/:id', (req, res) => {
     });
 });
 
-router.post('/posts/edit', (req, res) => {
+router.post('/posts/edit', eAdmin, (req, res) => {
 
     Post.findOne({_id: req.body.id}).then((post) => {
         
@@ -181,7 +182,7 @@ router.post('/posts/edit', (req, res) => {
     });
 });
 
-router.get('/posts/delete/:id', (req, res) => {
+router.get('/posts/delete/:id', eAdmin, (req, res) => {
     Post.remove({_id: req.params.id}).then(() => {
         req.flash('success_msg', 'Post deleted with success!');
         res.redirect('/admin/posts');
