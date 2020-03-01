@@ -14,6 +14,7 @@ const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 const passport = require('passport');
 require('./config/auth')(passport);
+const db = require('./config/db');
 
 app.use(session({ 
     secret: 'class_node',
@@ -39,7 +40,7 @@ app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/blogapp').then(() => {
+mongoose.connect(db.mongoURI).then(() => {
     console.log('Connected to Mongodb!');
 }).catch((error) => {
     console.log('Failed in connect to mongodb: ' + error);
@@ -109,7 +110,7 @@ app.get('/categories/:slug', (req, res) => {
 app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 
-const PORT = 8081;
+const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
     console.log('Server Rodando! http://localhost:8081');
 });
